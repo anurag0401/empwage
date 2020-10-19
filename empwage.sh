@@ -17,3 +17,20 @@ then
 else
 	salary=0
 fi
+
+isPartTime=1
+isFullTime=2
+empRatePerHr=20
+randomCheck=$(( RANDOM%3 ))
+
+if [ $isPartTime -eq $randomCheck ]
+then
+	empHrs=4
+	salary=$(($empHrs*$empRatePerHr))
+elif [ $isFullTime -eq $randomCheck ]
+then
+	empHrs=8
+	salary=$(($empHrs*$empRatePerHr))
+else
+	empHrs=0
+fi
