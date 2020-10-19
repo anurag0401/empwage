@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash 
 
 isPresent=1;
 randomCheck=$(( RANDOM%2 ));
@@ -35,11 +35,17 @@ else
 	empHrs=0
 fi
 
-echo "Employee wage using case statement"
-case $randomCheck in
-	$isFullTime)empHrs=8 ;;
-	$isPartTime)empHrs=4 ;;
-	*)
-	empHrs=0 ;;
-esac
-salary=$(($empHrs*$empRatePerHr))
+TotalWorkingDays=20
+for (( day=1; day<=$TotalWorkingDays; day++ ))
+do
+	case $randomCheck in
+		$isFullTime)empHrs=8 ;;
+		$isPartTime)empHrs=4 ;;
+		*)
+		empHrs=0 ;;
+	esac
+	salary=$(($empHrs*$empRatePerHr))
+	TotalSalary=$(( $TotalWorkingDays*$salary ))
+done
+
+echo $TotalSalary
