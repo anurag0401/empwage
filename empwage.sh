@@ -34,3 +34,12 @@ then
 else
 	empHrs=0
 fi
+
+echo "Employee wage using case statement"
+case $randomCheck in
+	$isFullTime)empHrs=8 ;;
+	$isPartTime)empHrs=4 ;;
+	*)
+	empHrs=0 ;;
+esac
+salary=$(($empHrs*$empRatePerHr))
