@@ -48,4 +48,27 @@ do
 	TotalSalary=$(( $TotalWorkingDays*$salary ))
 done
 
-echo $TotalSalary
+
+WorkingHours=100
+WorkingDays=20
+totalEmpHrs=0
+totalWorkingDays=0
+while [[ $totalEmpHrs -le $WorkingHours && $totalWorkingDays -le $WorkingDays ]]
+do
+        totalWorkingDays=$(($totalWorkingDays+1))
+        case $empCheck in
+                $PartTime)
+                        empHrs=4
+                        ;;
+                $FullTime)
+                        empHrs=8
+   			;;
+                *)
+                        empHrs=0
+                        ;;
+        esac
+        totalEmpHrs=$(($totalEmpHrs+$empHrs))
+        totalSalary=$(($totalEmpHrs*$empRatePerHr))
+		echo $totalEmpHrs
+		echo $totalSalary
+done
