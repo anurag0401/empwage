@@ -81,4 +81,4 @@ do
 done
 totalSalary="$( getDailyWages $totalEmpHrs )"
 echo "daily wages:" ${DailyWages[@]}
-
+echo "all keys   :" ${!DailyWages[@]}
