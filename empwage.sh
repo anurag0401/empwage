@@ -49,26 +49,31 @@ do
 done
 
 
-WorkingHours=100
-WorkingDays=20
+maxHrsInMonth=100
 totalEmpHrs=0
 totalWorkingDays=0
-while [[ $totalEmpHrs -le $WorkingHours && $totalWorkingDays -le $WorkingDays ]]
-do
-        totalWorkingDays=$(($totalWorkingDays+1))
-        case $empCheck in
-                $PartTime)
+function getWorkingHours() {
+        case $1 in
+                $isPartTime)
                         empHrs=4
                         ;;
-                $FullTime)
+                $isFullTime)
                         empHrs=8
    			;;
                 *)
                         empHrs=0
                         ;;
         esac
-        totalEmpHrs=$(($totalEmpHrs+$empHrs))
-        totalSalary=$(($totalEmpHrs*$empRatePerHr))
+	echo $empHrs
+}
+while [[ $totalEmpHrs -lt $maxHrsInMonth && $totalWorkingDays -lt $TotalWorkingDays ]]
+do
+        totalWorkingDays=$(($totalWorkingDays+1))
+
+	empHrs=$(getWorkingHours $((RANDOM%3)) )
+	totalEmpHrs=$(($totalEmpHrs+$empHrs))
 		echo $totalEmpHrs
+        totalSalary=$(($totalSalary+($totalEmpHrs*$empRatePerHr)))
 		echo $totalSalary
 done
+
