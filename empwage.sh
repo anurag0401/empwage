@@ -49,7 +49,7 @@ do
 done
 
 
-maxHrsInMonth=100
+WorkingHours=100
 totalEmpHrs=0
 totalWorkingDays=0
 function getWorkingHours() {
@@ -66,7 +66,7 @@ function getWorkingHours() {
         esac
 	echo $empHrs
 }
-while [[ $totalEmpHrs -lt $maxHrsInMonth && $totalWorkingDays -lt $TotalWorkingDays ]]
+while [[ $totalEmpHrs -lt $WorkingHours && $totalWorkingDays -lt $TotalWorkingDays ]]
 do
         totalWorkingDays=$(($totalWorkingDays+1))
 
